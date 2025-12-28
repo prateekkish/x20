@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# X2O
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║     ██╗  ██╗ ██████╗   ██████╗     ╔═══╦═══╦═══╗                              ║
+║     ╚██╗██╔╝ ╚════██╗ ██╔═══██╗    ║ X ║   ║ O ║                              ║
+║      ╚███╔╝   █████╔╝ ██║   ██║    ╠═══╬═══╬═══╣                              ║
+║      ██╔██╗  ██╔═══╝  ██║   ██║    ║   ║ O ║   ║                              ║
+║     ██╔╝╚██╗ ███████╗ ╚██████╔╝    ╠═══╬═══╬═══╣                              ║
+║     ╚═╝  ╚═╝ ╚══════╝  ╚═════╝     ║ X ║   ║ X ║                              ║
+║                                    ╚═══╩═══╩═══╝                              ║
+║                                                                               ║
+║              T I C - T A C - T O E   W I T H   A   T W I S T                  ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Each player can only have **3 symbols** on the board. Place a 4th, and your oldest one vanishes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<p align="center">
+  <img src=".github/assets/demo.png" alt="X2O Demo" width="400">
+</p>
 
-## Learn More
+## Rules
 
-To learn more about Next.js, take a look at the following resources:
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  1. Players take turns placing X or O                           │
+│  2. Each player can have MAX 3 symbols on the board             │
+│  3. Placing a 4th symbol removes your OLDEST one                │
+│  4. You CANNOT place on the square that just vanished           │
+│  5. Get 3 in a row to win!                                      │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Quick Start
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
+npm run dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Tech | Version |
+|------|---------|
+| Next.js | 16 |
+| React | 19 |
+| TypeScript | 5 |
+| Tailwind CSS | 4 |
+
+## Project Structure
+
+```
+src/app/
+├── page.tsx              # Game state management
+├── components/
+│   ├── LandingPage.tsx   # Start screen
+│   ├── GamePage.tsx      # Main game board
+│   ├── Square.tsx        # Board cells
+│   ├── LightningLine.tsx # Win animation
+│   └── Particles.tsx     # Victory effects
+└── constants.ts          # Game config
+```
+
+## License
+
+MIT
+
+---
+
+<p align="center">
+  <sub>Built with caffeine and recursion</sub>
+</p>
