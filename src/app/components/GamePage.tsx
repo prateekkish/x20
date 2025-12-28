@@ -124,10 +124,10 @@ export function GamePage({ onReset, onShowRules }: GamePageProps) {
   );
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#0a0a0f] overflow-hidden p-4">
+    <div className="relative flex h-[100dvh] flex-col items-center justify-center bg-[#0a0a0f] overflow-hidden p-4">
       <Particles />
 
-      <div className="relative z-10 flex flex-col items-center gap-4 w-full max-w-md">
+      <div className="relative z-10 flex flex-col items-center gap-3 w-full max-w-md">
         <div className="w-full flex justify-between items-center">
           <div className="w-8" />
           <h1 className="text-xl font-bold tracking-wider">
@@ -172,7 +172,7 @@ export function GamePage({ onReset, onShowRules }: GamePageProps) {
         </div>
 
         <div
-          className="relative game-grid grid grid-cols-3 gap-1 p-4 rounded-lg bg-[#0a0a12] border border-cyan-900/30"
+          className="relative game-grid grid grid-cols-3 gap-1 p-3 rounded-lg bg-[#0a0a12] border border-cyan-900/30 w-full max-w-[320px]"
           role="grid"
           aria-label="Tic Tac Toe game board"
         >

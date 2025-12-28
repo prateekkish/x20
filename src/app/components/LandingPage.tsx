@@ -9,7 +9,7 @@ interface LandingPageProps {
 
 export function LandingPage({ onStart }: LandingPageProps) {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center gap-8 bg-[#0a0a0f] overflow-hidden px-6">
+    <div className="relative flex h-[100dvh] flex-col items-center justify-center gap-8 bg-[#0a0a0f] overflow-hidden px-6">
       <Particles />
 
       <div className="relative z-10 flex flex-col items-center gap-8 max-w-md w-full">

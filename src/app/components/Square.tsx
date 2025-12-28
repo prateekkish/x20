@@ -18,7 +18,7 @@ export function Square({ value, isDeleting, isWinning, onClick, disabled }: Squa
 
   return (
     <button
-      className={`relative flex items-center justify-center w-[30vw] h-[30vw] max-w-28 max-h-28
+      className={`relative flex items-center justify-center aspect-square w-full
         bg-[#0d0d15] border border-cyan-900/50
         ${disabled ? "cursor-not-allowed" : "cursor-pointer hover:bg-cyan-950/30"}
         ${winningClass}`}
@@ -28,10 +28,8 @@ export function Square({ value, isDeleting, isWinning, onClick, disabled }: Squa
     >
       {value && (
         <span
-          className="font-bold select-none"
+          className="font-bold select-none text-5xl sm:text-6xl"
           style={{
-            fontSize: value === "X" ? "12vw" : "16vw",
-            maxWidth: value === "X" ? "3.5rem" : "4.5rem",
             color: isDeleting
               ? (value === "X" ? COLORS.X_FADED : COLORS.O_FADED)
               : (value === "X" ? COLORS.X : COLORS.O),
