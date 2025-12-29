@@ -5,3 +5,7 @@ export { RulesModal } from "./RulesModal";
 export { RulesList } from "./RulesList";
 export { LandingPage } from "./LandingPage";
 export { GamePage } from "./GamePage";
+export { MultiplayerLobby } from "./MultiplayerLobby";
+export { CreateGame } from "./CreateGame";
+export { JoinGame } from "./JoinGame";
+export { MultiplayerGame } from "./MultiplayerGame";
