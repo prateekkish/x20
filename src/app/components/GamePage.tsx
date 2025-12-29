@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { Square } from "./Square";
 import { LightningLine } from "./LightningLine";
 import { Particles } from "./Particles";
 import { WINNING_LINES, GAME_CONFIG } from "../constants";
+import { getAIMove } from "../ai";
+import type { GameMode } from "../page";
 
 type Player = "X" | "O";
 type SquareValue = Player | null;
@@ -16,6 +18,7 @@ interface Move {
 }
 
 interface GamePageProps {
+  mode: GameMode;
   onReset: () => void;
   onShowRules: () => void;
 }
@@ -42,7 +45,7 @@ function InfoIcon({ onClick }: { onClick: () => void }) {
   );
 }
 
-export function GamePage({ onReset, onShowRules }: GamePageProps) {
+export function GamePage({ mode, onReset, onShowRules }: GamePageProps) {
   const [moves, setMoves] = useState<Move[]>([]);
   const [currentPlayer, setCurrentPlayer] = useState<Player>("X");
   const [moveCounter, setMoveCounter] = useState(0);
@@ -106,6 +109,22 @@ export function GamePage({ onReset, onShowRules }: GamePageProps) {
     setMoveCounter(c => c + 1);
     setCurrentPlayer(p => p === "X" ? "O" : "X");
   }, [winner, squares, currentPlayer, moveCounter]);
+
+  // AI move effect
+  useEffect(() => {
+    if (mode !== "lonely") return;
+    if (currentPlayer !== "O") return;
+    if (winner) return;
+
+    const timeout = setTimeout(() => {
+      const aiPosition = getAIMove(squares, moves);
+      if (aiPosition !== null) {
+        handleClick(aiPosition);
+      }
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [mode, currentPlayer, winner, squares, moves, handleClick]);
 
   const resetGame = useCallback(() => {
     setMoves([]);
@@ -183,7 +202,7 @@ export function GamePage({ onReset, onShowRules }: GamePageProps) {
               isDeleting={deletingPosition === i}
               isWinning={winningLine?.includes(i) ?? false}
               onClick={() => handleClick(i)}
-              disabled={!!winner || squares[i] !== null}
+              disabled={!!winner || squares[i] !== null || (mode === "lonely" && currentPlayer === "O")}
             />
           ))}
           {winner && winningLine && (

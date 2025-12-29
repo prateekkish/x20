@@ -2,9 +2,10 @@
 
 import { Particles } from "./Particles";
 import { RulesList } from "./RulesList";
+import type { GameMode } from "../page";
 
 interface LandingPageProps {
-  onStart: () => void;
+  onStart: (mode: GameMode) => void;
 }
 
 export function LandingPage({ onStart }: LandingPageProps) {
@@ -27,16 +28,28 @@ export function LandingPage({ onStart }: LandingPageProps) {
           <RulesList variant="numbered" />
         </div>
 
-        <button
-          onClick={onStart}
-          className="w-full py-4 text-lg uppercase tracking-widest font-semibold
-            border-2 border-cyan-400 rounded-lg
-            bg-cyan-950/20 text-cyan-400
-            hover:bg-cyan-400 hover:text-black
-            transition-all duration-300"
-        >
-          Play Now
-        </button>
+        <div className="w-full flex flex-col gap-3">
+          <button
+            onClick={() => onStart("two-player")}
+            className="w-full py-4 text-lg uppercase tracking-widest font-semibold
+              border-2 border-cyan-400 rounded-lg
+              bg-cyan-950/20 text-cyan-400
+              hover:bg-cyan-400 hover:text-black
+              transition-all duration-300"
+          >
+            Two Players
+          </button>
+          <button
+            onClick={() => onStart("lonely")}
+            className="w-full py-4 text-lg uppercase tracking-widest font-semibold
+              border-2 border-pink-500 rounded-lg
+              bg-pink-950/20 text-pink-500
+              hover:bg-pink-500 hover:text-black
+              transition-all duration-300"
+          >
+            Lonely Mode
+          </button>
+        </div>
       </div>
     </div>
   );
