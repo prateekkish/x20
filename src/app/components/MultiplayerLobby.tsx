@@ -1,14 +1,14 @@
 "use client";
 
 import { Particles } from "./Particles";
-import { RulesList } from "./RulesList";
-import type { GameMode } from "../page";
 
-interface LandingPageProps {
-  onStart: (mode: GameMode) => void;
+interface MultiplayerLobbyProps {
+  onCreateGame: () => void;
+  onJoinGame: () => void;
+  onBack: () => void;
 }
 
-export function LandingPage({ onStart }: LandingPageProps) {
+export function MultiplayerLobby({ onCreateGame, onJoinGame, onBack }: MultiplayerLobbyProps) {
   return (
     <div className="relative flex h-[100dvh] flex-col items-center justify-center gap-8 bg-[#0a0a0f] overflow-hidden px-6">
       <Particles />
@@ -20,44 +20,39 @@ export function LandingPage({ onStart }: LandingPageProps) {
             <span className="text-pink-500">2</span>
             <span className="text-cyan-400">O</span>
           </h1>
-          <p className="text-sm text-gray-400 mb-1">Tic Tac Toe with a twist</p>
-          <p className="text-xs text-gray-600 uppercase tracking-[0.3em]">Infinite Mode</p>
-        </div>
-
-        <div className="w-full bg-[#0a0a12] border border-cyan-900/30 rounded-lg p-6">
-          <RulesList variant="numbered" />
+          <p className="text-sm text-purple-400 uppercase tracking-widest">Multiplayer</p>
         </div>
 
         <div className="w-full flex flex-col gap-3">
           <button
-            onClick={() => onStart("two-player")}
+            onClick={onCreateGame}
             className="w-full py-4 text-lg uppercase tracking-widest font-semibold
               border-2 border-cyan-400 rounded-lg
               bg-cyan-950/20 text-cyan-400
               hover:bg-cyan-400 hover:text-black
               transition-all duration-300"
           >
-            Two Players
+            Create Game
           </button>
           <button
-            onClick={() => onStart("lonely")}
+            onClick={onJoinGame}
             className="w-full py-4 text-lg uppercase tracking-widest font-semibold
               border-2 border-pink-500 rounded-lg
               bg-pink-950/20 text-pink-500
               hover:bg-pink-500 hover:text-black
               transition-all duration-300"
           >
-            Lonely Mode
+            Join Game
           </button>
           <button
-            onClick={() => onStart("multiplayer")}
-            className="w-full py-4 text-lg uppercase tracking-widest font-semibold
-              border-2 border-purple-500 rounded-lg
-              bg-purple-950/20 text-purple-500
-              hover:bg-purple-500 hover:text-black
-              transition-all duration-300"
+            onClick={onBack}
+            className="w-full py-3 text-sm uppercase tracking-widest
+              border border-gray-700 rounded-lg
+              bg-transparent text-gray-500
+              hover:bg-gray-900 hover:border-gray-600 hover:text-gray-400
+              transition-all duration-300 mt-2"
           >
-            Multiplayer
+            Back
           </button>
         </div>
       </div>
